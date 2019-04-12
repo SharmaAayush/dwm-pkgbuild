@@ -1,9 +1,9 @@
 # Maintainer: Piyush Pangtey <gokuvsvegita at gmail dot com>
 
 pkgname=dwm
-pkgver=mar19.e301ff8
+pkgver=ayush.73a6c43
 pkgrel=1
-_tagver="mar19"
+_tagver="ayush@newgen"
 pkgdesc="DWM by suckless"
 arch=('x86_64')
 url="https://dwm.suckless.org"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('freetype2' 'libx11' 'libxcb' 'libxft')
 makedepends=('make')
 source=(
-    "dwm::git+https://github.com/pangteypiyush/dwm"
+    "dwm::git+https://github.com/SharmaAayush/dwm"
 )
 sha256sums=(
     'SKIP'
@@ -19,7 +19,7 @@ sha256sums=(
 
 pkgver() {
   cd "${pkgname}"
-  printf "%s.%s" "$(git describe --tags)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s" "ayush" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -34,5 +34,5 @@ build() {
 package() {
     make -C "$pkgname" PREFIX="usr/" DESTDIR="$pkgdir/" install
     install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/doc/$pkgname/LICENSE"
-    install -Dm644 "$pkgname/README" "$pkgdir/usr/share/doc/$pkgname/README"
+    install -Dm644 "$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README"
 }
